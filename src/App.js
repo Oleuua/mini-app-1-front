@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, ScreenSpinner, AdaptivityProvider, AppRoot } from '@vkontakte/vkui';
+import { Icon24ErrorCircle } from '@vkontakte/icons';
+import { View, ScreenSpinner, AdaptivityProvider, AppRoot, Snackbar, Avatar, Text } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
@@ -9,6 +10,7 @@ import Persik from './panels/Persik';
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
+	const [snackData, setSnack] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
 	useEffect(() => {
@@ -19,10 +21,30 @@ const App = () => {
 				document.body.attributes.setNamedItem(schemeAttribute);
 			}
 		});
-		async function fetchData() {
-			const user = await bridge.send('VKWebAppGetUserInfo');
-			setUser(user);
-			setPopout(null);
+		function fetchData() {
+			let isUserDataFound = false;
+			bridge.send('VKWebAppGetUserInfo')
+			.then(user => {
+				isUserDataFound = true;
+				setUser(user);
+				setPopout(null);
+			});
+
+			setTimeout(() => {
+				if (!isUserDataFound) {
+					setPopout(null);
+					setSnack(() => (
+						<Snackbar
+							onClose={() => setSnack(null)}
+							before={<Avatar size={24}><Icon24ErrorCircle fill="#e64646" width={24} height={24} /></Avatar>}
+							duration={5000}
+						>
+							<Text>Не удалось установить соединение с <b>VK Bridge</b></Text>
+						</Snackbar>
+					))
+				}
+			}, 1000);
+			
 		}
 		fetchData();
 	}, []);
