@@ -1,0 +1,25 @@
+.input {
+    width: 40px;
+    height: 40px;
+    margin: 0em 0.2em;
+}
+.input input {
+    text-align: center;
+}
+.logo {
+    margin: 1em;
+}
+.group {
+    padding: 0em 1em;
+}
+.card {
+    display: flex;
+    justify-content: center;
+}
+.withLogo {
+    background-color: rgba(0, 0, 0, 0%);
+}
+.withInput {
+    margin: 0em 1em;
+    background-color: #4B47B2;
+}
