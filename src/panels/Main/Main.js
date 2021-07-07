@@ -13,11 +13,11 @@ const Main = ({ id, go, snack }) => (
             Enigma
         </PanelHeader>
         <Group className="group">
-            <Card className="card withLogo"><Logo /></Card>
+            <Card className="card with-logo"><Logo /></Card>
         </Group>
-        <Card className="card withInput" style={{ padding: '1em' }}>
-            <Text weight="semibold" style={{ color: 'white', display: 'flex', justifyContent: 'center', marginBottom: '1em' }}>Присоединиться к викторине</Text>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}>
+        <Card className="card with-input" style={{ padding: '1em' }}>
+            <Text className="content-center mb1" weight="semibold" style={{ color: 'white' }}>Присоединиться к викторине</Text>
+            <div className="content-center mb1">
                 <Input className="input" type="number" defaultValue="1" />
                 <Input className="input" type="number" defaultValue="2" />
                 <Input className="input" type="number" defaultValue="3" />
@@ -25,12 +25,12 @@ const Main = ({ id, go, snack }) => (
                 <Input className="input" type="number" defaultValue="5" />
                 <Input className="input" type="number" defaultValue="6" />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Button style={{ backgroundColor: 'white', color: '#4B47B2' }} size="s" after={<Icon24Chevron/>}>Начать</Button>
+            <div className="content-center">
+                <Button className="btn-connect" size="s" after={<Icon24Chevron/>}>Начать</Button>
             </div>
         </Card>
         <Button 
-            style={{ backgroundColor: '#e1e3e6', color: '#4B47B2', margin: '5em 1em 0.8em 1em' }} 
+            className="btn-gallery" 
             size="l" 
             after={
                 <div style={{ display: 'flex' }}>
@@ -42,7 +42,7 @@ const Main = ({ id, go, snack }) => (
                 Мои викторины
         </Button>
         <Button 
-            style={{ backgroundColor: '#4B47B2', color: 'white', margin: '0em 1em' }} 
+            className="btn-create"
             size="l"
             before={<Icon24Add/>}
             after={<Icon24Chevron/>}

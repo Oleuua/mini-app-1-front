@@ -1,3 +1,19 @@
+/* Кнопки */
+.btn-connect {
+    background-color: white;
+    color: #4B47B2;
+}
+.btn-gallery {
+    background-color: #e1e3e6;
+    color: #4B47B2;
+    margin: 5em 1em 0.8em 1em;
+}
+.btn-create {
+    background-color: #4B47B2;
+    color: white;
+    margin: 0em 1em;
+}
+/* Inputs для ввода ID сессии */
 .input {
     width: 40px;
     height: 40px;
@@ -6,9 +22,11 @@
 .input input {
     text-align: center;
 }
+/* Логотип */
 .logo {
     margin: 1em;
 }
+/* Карточки и группы из которых состоит UI */
 .group {
     padding: 0em 1em;
 }
@@ -16,10 +34,19 @@
     display: flex;
     justify-content: center;
 }
-.withLogo {
+.with-logo {
     background-color: rgba(0, 0, 0, 0%);
 }
-.withInput {
+.with-input {
     margin: 0em 1em;
     background-color: #4B47B2;
+}
+/* Отступ снизу */
+.mb1 {
+    margin-bottom: 1em;
+}
+/* Выравнивание контента по центру блока */
+.content-center {
+    display: flex;
+    justify-content: center;
 }
