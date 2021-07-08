@@ -1,23 +1,25 @@
+/* Единный стиль шрифта */
+body, div {
+    font-family: Roboto !important;
+}
+/*** ----- Классы ------ ***/
 /* Кнопки */
 .btn-connect {
-    background-color: white;
-    color: #4B47B2;
+    background-color: #4B47B2;
+    color: white;
 }
 .btn-gallery {
     background-color: #e1e3e6;
     color: #4B47B2;
-    margin: 5em 1em 0.8em 1em;
 }
 .btn-create {
     background-color: #4B47B2;
     color: white;
-    margin: 0em 1em;
 }
 /* Inputs для ввода ID сессии */
 .input {
     width: 40px;
     height: 40px;
-    margin: 0em 0.2em;
 }
 .input input {
     text-align: center;
@@ -30,16 +32,8 @@
 .group {
     padding: 0em 1em;
 }
-.card {
-    display: flex;
-    justify-content: center;
-}
-.with-logo {
+.transparent-background {
     background-color: rgba(0, 0, 0, 0%);
-}
-.with-input {
-    margin: 0em 1em;
-    background-color: #4B47B2;
 }
 /* Отступ снизу */
 .mb1 {
@@ -49,4 +43,12 @@
 .content-center {
     display: flex;
     justify-content: center;
+}
+/* Выравнивание текста в блоке по центру */
+.text-center {
+    text-align: center;
+}
+/* Элемент с шириной 25em */
+.w25 {
+    width: 25em;
 }
