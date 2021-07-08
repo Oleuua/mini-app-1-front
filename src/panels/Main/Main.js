@@ -33,7 +33,7 @@ const Main = ({ id, go, snack }) => (
                 size="l"
                 after={
                     <div style={{ display: 'flex' }}>
-                        <Counter style={{ marginRight: '.5em', backgroundColor: '#4B47B2', color: 'white' }}>13</Counter>
+                        <Counter style={{ marginRight: '.5em', backgroundColor: '#4B47B2', color: 'white' }}>3</Counter>
                         <Icon24Chevron />
                     </div>
                 }
