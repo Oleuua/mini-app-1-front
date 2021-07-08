@@ -37,6 +37,8 @@ const Main = ({ id, go, snack }) => (
                         <Icon24Chevron />
                     </div>
                 }
+                onClick={go}
+                data-to="mygames"
             >
                 Мои викторины
             </Button>

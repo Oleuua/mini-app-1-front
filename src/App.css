@@ -1,0 +1,5 @@
+/* Шрифт ... для всех заголовков */
+.vkuiPanelHeader__content-in {
+    font-family: 'VK Sans Display';
+    font-weight: 600;
+}
