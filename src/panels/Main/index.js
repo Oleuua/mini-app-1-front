@@ -22,6 +22,14 @@ const Main = ({ id, go, snack }) => {
         let num = Number.parseInt(target.slice(-1))
         let isPressedNum = ((value.charCodeAt(0) > 47) & (value.charCodeAt(0) <= 57))? true : false
         let isPressedDel = (inputs[target].length > value.length) ? true : false
+        let howManyFilled = 5
+
+        // Проверка, на заполненость всех полей, чтобы кнопка разблокировалась
+        for (let key in inputs) {
+            if (inputs[key]!= '')
+                howManyFilled -= 1
+        }
+        setBtnGoDis(!(howManyFilled == 0) ? true : false)
 
         // Проверка что символ в value input`а, это число
         if (isPressedNum || isPressedDel) {
