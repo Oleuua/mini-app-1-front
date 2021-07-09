@@ -20,6 +20,12 @@ body, div {
 .input {
     width: 40px;
     height: 40px;
+    background: #F7F8FA;
+    border: 1px solid #D3D9DE;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: center;
 }
 /* Логотип */
 .logo {

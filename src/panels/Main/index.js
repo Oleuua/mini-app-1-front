@@ -6,8 +6,47 @@ import { Panel, PanelHeader, Card, Text, Input, Button, Counter, Spacing } from 
 import './index.css';
 import Logo from '../../img/logo';
 
+var codeFieldNumbers = [0, 1, 2, 3, 4, 5];
+var codeFieldValue = {}
+for (let i = 0; i < 6; i++) 
+    codeFieldValue['codeField' + i] = ''
 
 const Main = ({ id, go, snack }) => {
+    const [isBtnGoDis, setBtnGoDis] = useState(true);
+    const [inputs, setInputs] = useState({ ...codeFieldValue });
+    const inputRef = useRef(codeFieldNumbers.map(() => createRef()));
+
+    const handleChange = e => {
+        let value = e.target.value.substring(0, 1)
+        let target = e.target.name
+        let num = Number.parseInt(target.slice(-1))
+        let isPressedNum = ((value.charCodeAt(0) > 47) & (value.charCodeAt(0) <= 57))? true : false
+        let isPressedDel = (inputs[target].length > value.length) ? true : false
+
+        // Проверка что символ в value input`а, это число
+        if (isPressedNum || isPressedDel) {
+            setInputs({ ...inputs, [target]: value })
+            if ((num < 5) & (isPressedNum)) 
+                num += 1 
+        }
+
+        // Устанавливаем фокус на элемент
+        inputRef.current[num].current.focus();
+        
+    };
+
+    const inputArr = codeFieldNumbers.map(n =>
+        <input
+            className="input"
+            key={n}
+            name={'codeField' + n}
+            type="text"
+            onChange={handleChange}
+            value={inputs['codeField' + n]}
+            ref={inputRef.current[n]}
+        />
+    );
+
     return (
         <Panel id={id}>
             <PanelHeader>
@@ -17,6 +56,7 @@ const Main = ({ id, go, snack }) => {
             <Card className="content-center transparent-background" style={{ padding: '1em' }}>
                 <Text className="content-center mb1 text-center" weight="regular">Если у вас есть код для присоединения к игре,<br /> введите его сюда</Text>
                 <div className="content-center mb1" style={{ justifyContent: 'space-around' }}>
+                    {inputArr}
                 </div>
                 <div className="content-center">
                     <Button className="btn-connect w25" size="l" disabled={isBtnGoDis}>Присоединиться к викторине</Button>
