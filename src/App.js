@@ -7,7 +7,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import './App.css';
 import Home from './panels/Home';
 import Persik from './panels/Persik';
-import Main from './panels/Main/Main';
+import Main from './panels/Main/';
 import MyGames from './panels/MyGames/';
 
 const App = () => {
