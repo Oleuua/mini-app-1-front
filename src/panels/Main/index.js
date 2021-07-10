@@ -1,4 +1,4 @@
-import { React, useRef, useState, createRef } from 'react';
+import { React, useRef, useState, createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon24Chevron, Icon24Add } from '@vkontakte/icons';
 import { Panel, PanelHeader, Card, Text, Input, Button, Counter, Spacing } from '@vkontakte/vkui';
@@ -22,14 +22,6 @@ const Main = ({ id, go, snack }) => {
         let num = Number.parseInt(target.slice(-1))
         let isPressedNum = ((value.charCodeAt(0) > 47) & (value.charCodeAt(0) <= 57))? true : false
         let isPressedDel = (inputs[target].length > value.length) ? true : false
-        let howManyFilled = 5
-
-        // Проверка, на заполненость всех полей, чтобы кнопка разблокировалась
-        for (let key in inputs) {
-            if (inputs[key]!= '')
-                howManyFilled -= 1
-        }
-        setBtnGoDis(!(howManyFilled == 0) ? true : false)
 
         // Проверка что символ в value input`а, это число
         if (isPressedNum || isPressedDel) {
@@ -42,6 +34,19 @@ const Main = ({ id, go, snack }) => {
         inputRef.current[num].current.focus();
         
     };
+
+    useEffect(() => {
+        // Проверка, на заполненость всех полей, чтобы кнопка разблокировалась
+        let howManyFilled = 0
+
+        for (let key in inputs) {
+            if (inputs[key]!= '')
+                howManyFilled += 1
+        }
+
+        setBtnGoDis(!(howManyFilled == 6))
+
+      });
 
     const inputArr = codeFieldNumbers.map(n =>
         <input
