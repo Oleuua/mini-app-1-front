@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
+import { Provider } from 'react-redux';
 import { Icon24ErrorCircle } from '@vkontakte/icons';
 import { View, ScreenSpinner, AdaptivityProvider, AppRoot, Snackbar, Avatar, Text } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import './App.css';
+import store from './components/store';
 import Home from './panels/Home';
 import Persik from './panels/Persik';
 import Main from './panels/Main/';
 import MyGames from './panels/MyGames/';
+import Modal from './components/Modal/Modal';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('main');
@@ -57,16 +60,18 @@ const App = () => {
 	};
 
 	return (
-		<AdaptivityProvider>
-			<AppRoot>
-				<View activePanel={activePanel} popout={popout}>
+		<Provider store={store}>
+			<AdaptivityProvider>
+				<AppRoot>
+					<View activePanel={activePanel} popout={popout} modal={<Modal />}>
 						<Main id='main' snack={snackData} go={go}/>
 						<MyGames id='mygames' snack={snackData} go={go}/>
 						<Home id='home' fetchedUser={fetchedUser} go={go} />
 						<Persik id='persik' go={go} />
-				</View>
-			</AppRoot>
-		</AdaptivityProvider>
+					</View>
+				</AppRoot>
+			</AdaptivityProvider>
+		</Provider>
 	);
 }
 

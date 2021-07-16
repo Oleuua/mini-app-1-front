@@ -1,11 +1,16 @@
+// Внешние зависимости
 import { React, useRef, useState, createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Icon24Chevron, Icon24Add } from '@vkontakte/icons';
-import { Panel, PanelHeader, Card, Text, Input, Button, Counter, Spacing } from '@vkontakte/vkui';
+import { Panel, PanelHeader, Card, Text, Button, Counter, Spacing } from '@vkontakte/vkui';
 
+// Мои компоненты
 import css from './styles.module.css';
 import Logo from '../../img/logo';
 
+// Slice
+import { setShowedModal } from '../../components/slices/modalSlice';
 
 var codeFieldNumbers = [0, 1, 2, 3, 4, 5];
 var codeFieldValue = {}
@@ -13,6 +18,7 @@ for (let i = 0; i < 6; i++)
     codeFieldValue['codeField' + i] = ''
 
 const Main = ({ id, go, snack }) => {
+    const dispatch = useDispatch();
     const [isBtnGoDis, setBtnGoDis] = useState(true);
     const [inputs, setInputs] = useState({ ...codeFieldValue });
     const inputRef = useRef(codeFieldNumbers.map(() => createRef()));
@@ -35,6 +41,9 @@ const Main = ({ id, go, snack }) => {
         inputRef.current[num].current.focus();
         
     };
+
+    // Активация модального окна
+    const handleCreateQuiz = () => dispatch(setShowedModal('createQuiz'));
 
     useEffect(() => {
         // Проверка, на заполненость всех полей, чтобы кнопка разблокировалась
@@ -76,7 +85,7 @@ const Main = ({ id, go, snack }) => {
                     <Button className={[css.btnConnect, css.w25].join(' ')} size="l" disabled={isBtnGoDis}>Присоединиться к викторине</Button>
                 </div>
             </Card>
-            <Card className={css.contentCenter} style={{ marginTop: '3em' }}>
+            <Card className={[css.contentCenter, css.transparentBackground].join(' ')} style={{ marginTop: '3em' }}>
                 <Button
                     className={[css.btnGallery, css.w25].join(' ')}
                     size="l"
@@ -97,6 +106,7 @@ const Main = ({ id, go, snack }) => {
                     size="l"
                     before={<Icon24Add />}
                     after={<Icon24Chevron />}
+                    onClick={handleCreateQuiz}
                 >
                     Создать викторину
                 </Button>

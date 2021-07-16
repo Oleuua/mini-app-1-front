@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel, PanelHeader, PanelHeaderBack, Group, Card, Text, Button } from '@vkontakte/vkui';
 
-import { cardRowDir, leftSideMygames, rightSideMygames, btnStart, contentCenter, mb1, textSecondary, fw400, fw600, card } from './styles.module.css';
+import { cardRowDir, leftSideMygames, rightSideMygames, btnStart, contentCenter, mb1, textSecondary, fw400, fw600, card, sferumColor } from './styles.module.css';
   
 
 const MyGamesData = [
@@ -58,7 +58,7 @@ export default function MyGames({ id, go, snack }) {
     return (
         <Panel id={id}>
             <PanelHeader
-                left={<PanelHeaderBack onClick={go} data-to="main" />}
+                left={<PanelHeaderBack className={sferumColor} onClick={go} data-to="main" />}
             >
                 Мои викторины
             </PanelHeader>
