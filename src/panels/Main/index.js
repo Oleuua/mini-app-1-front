@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { Icon24Chevron, Icon24Add } from '@vkontakte/icons';
 import { Panel, PanelHeader, Card, Text, Input, Button, Counter, Spacing } from '@vkontakte/vkui';
 
-import './index.css';
+import css from './styles.module.css';
 import Logo from '../../img/logo';
+
 
 var codeFieldNumbers = [0, 1, 2, 3, 4, 5];
 var codeFieldValue = {}
@@ -50,7 +51,7 @@ const Main = ({ id, go, snack }) => {
 
     const inputArr = codeFieldNumbers.map(n =>
         <input
-            className="input"
+            className={css.input}
             key={n}
             name={'codeField' + n}
             type="text"
@@ -65,19 +66,19 @@ const Main = ({ id, go, snack }) => {
             <PanelHeader>
                 Enigma
             </PanelHeader>
-            <div className="content-center transparent-background"><Logo /></div>
-            <Card className="content-center transparent-background" style={{ padding: '1em' }}>
-                <Text className="content-center mb1 text-center" weight="regular">Если у вас есть код для присоединения к игре,<br /> введите его сюда</Text>
-                <div className="content-center mb1" style={{ justifyContent: 'space-around' }}>
+            <div className={[css.contentCenter, css.transparentBackground].join(' ')}><Logo /></div>
+            <Card className={[css.contentCenter, css.transparentBackground].join(' ')} style={{ padding: '1em' }}>
+                <Text className={[css.contentCenter, css.mb1, css.textCenter].join(' ')} weight="regular">Если у вас есть код для присоединения к игре,<br /> введите его сюда</Text>
+                <div className={[css.contentCenter, css.mb1].join(' ')} style={{ justifyContent: 'space-around' }}>
                     {inputArr}
                 </div>
-                <div className="content-center">
-                    <Button className="btn-connect w25" size="l" disabled={isBtnGoDis}>Присоединиться к викторине</Button>
+                <div className={css.contentCenter}>
+                    <Button className={[css.btnConnect, css.w25].join(' ')} size="l" disabled={isBtnGoDis}>Присоединиться к викторине</Button>
                 </div>
             </Card>
-            <Card className="content-center transparent-background" style={{ marginTop: '3em' }}>
+            <Card className={css.contentCenter} style={{ marginTop: '3em' }}>
                 <Button
-                    className="btn-gallery w25"
+                    className={[css.btnGallery, css.w25].join(' ')}
                     size="l"
                     after={
                         <div style={{ display: 'flex' }}>
@@ -92,7 +93,7 @@ const Main = ({ id, go, snack }) => {
                 </Button>
                 <Spacing />
                 <Button
-                    className="btn-create w25"
+                    className={[css.btnCreate, css.w25].join(' ')}
                     size="l"
                     before={<Icon24Add />}
                     after={<Icon24Chevron />}

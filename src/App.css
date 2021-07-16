@@ -1,3 +1,7 @@
+/* Единный стиль шрифта */
+body, div {
+    font-family: Roboto !important;
+}
 /* Шрифт ... для всех заголовков */
 .vkuiPanelHeader__content-in {
     font-family: 'VK Sans Display';

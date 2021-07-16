@@ -1,47 +1,40 @@
-/* Единный стиль шрифта */
-body, div {
-    font-family: Roboto !important;
-}
 /*** ----- Классы ------ ***/
 /* Распределение в карточке контента на столбцы */
-.card-row-dir {
+.cardRowDir {
     display: flex;
     flex-direction: row;
     padding: 1.2em .8em;
 }
 /* Левая часть карточек MyGames */
-.left-side-mygames {
+.leftSideMygames {
     display: flex;
     width: 50%;
     flex-direction: column;
 }
 /* Правая часть карточек MyGames */
-.right-side-mygames {
+.rightSideMygames {
     display: flex;
     width: 45%;
     justify-content: flex-end;
     align-items: center;
 }
 /* Кнопки */
-.btn-start {
+.btnStart {
     background-color: #4B47B2;
     color: white;
 }
 /* Выравнивание контента по центру блока */
-.content-center {
+.contentCenter {
     display: flex;
     justify-content: center;
-}
-/* Элемент с шириной 25em */
-.w25 {
-    width: 25em;
+    width: 100%;
 }
 /* Отступ снизу */
 .mb1 {
     margin-bottom: 1em;
 }
 /* Второстипенный текст */
-.text-secondary {
+.textSecondary {
     font-size: .8em;
     color: 'var(--text_secondary)';
 }
@@ -52,4 +45,8 @@ body, div {
 /* Жирность шрифта 600 */
 .fw600 {
     font-weight: 600;
+}
+.card {
+    width: 60%;
+    min-width: 382px;
 }

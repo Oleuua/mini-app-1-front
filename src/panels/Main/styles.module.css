@@ -1,18 +1,14 @@
-/* Единный стиль шрифта */
-body, div {
-    font-family: Roboto !important;
-}
 /*** ----- Классы ------ ***/
 /* Кнопки */
-.btn-connect {
+.btnConnect {
     background-color: #4B47B2;
     color: white;
 }
-.btn-gallery {
+.btnGallery {
     background-color: #e1e3e6;
     color: #4B47B2;
 }
-.btn-create {
+.btnCreate {
     background-color: #4B47B2;
     color: white;
 }
@@ -35,7 +31,7 @@ body, div {
 .group {
     padding: 0em 1em;
 }
-.transparent-background {
+.transparentBackground {
     background-color: rgba(0, 0, 0, 0%);
 }
 /* Отступ снизу */
@@ -43,12 +39,12 @@ body, div {
     margin-bottom: 1em;
 }
 /* Выравнивание контента по центру блока */
-.content-center {
+.contentCenter {
     display: flex;
     justify-content: center;
 }
 /* Выравнивание текста в блоке по центру */
-.text-center {
+.textCenter {
     text-align: center;
 }
 /* Элемент с шириной 25em */

@@ -1,8 +1,23 @@
-import React from 'react';
+import { useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Panel, PanelHeader, PanelHeaderBack, Group, Card, Text, Button } from '@vkontakte/vkui';
 
-import './index.css';
+import { cardRowDir, leftSideMygames, rightSideMygames, btnStart, contentCenter, mb1, textSecondary, fw400, fw600, card } from './styles.module.css';
+
+// Функция определяющяя размеры экрана 
+function useWindowSize() {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  }
+  
 
 const MyGamesData = [
     {
@@ -39,15 +54,17 @@ const MyGamesData = [
     }]
 
 export default function MyGames({ id, go, snack }) {
+    const [width, height] = useWindowSize();
+
     const cardItems = MyGamesData.map((data) =>
-        <Card className="w25 mb1" size="l" mode="outline">
-            <div className="card-row-dir">
-                <div className="left-side-mygames">
-                    <Text className="fw600">{data.title}</Text>
-                    <Text className="fw400 text-secondary">Последний запуск {data.date.toLocaleDateString()}</Text>
+        <Card className={[card, mb1].join(' ')} size="l" mode="outline">
+            <div className={cardRowDir}>
+                <div className={leftSideMygames}>
+                    <Text className={fw600}>{data.title}</Text>
+                    <Text className={[fw400, textSecondary].join(' ')}>Последний запуск {data.date.toLocaleDateString()}</Text>
                 </div>
-                <div className="right-side-mygames">
-                    <Button className="btn-start" size="s">Запустить</Button>
+                <div className={rightSideMygames}>
+                    <Button className={btnStart} size="s">Запустить</Button>
                 </div>
             </div>
         </Card>
@@ -58,9 +75,9 @@ export default function MyGames({ id, go, snack }) {
             <PanelHeader
                 left={<PanelHeaderBack onClick={go} data-to="main" />}
             >
-                Мои викторины
+                Мои викторины {width} x {height}
             </PanelHeader>
-            <Group className="content-center">
+            <Group className={contentCenter}>
                 {cardItems}
             </Group>
             {snack}
