@@ -1,22 +1,8 @@
-import { useLayoutEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel, PanelHeader, PanelHeaderBack, Group, Card, Text, Button } from '@vkontakte/vkui';
 
 import { cardRowDir, leftSideMygames, rightSideMygames, btnStart, contentCenter, mb1, textSecondary, fw400, fw600, card } from './styles.module.css';
-
-// Функция определяющяя размеры экрана 
-function useWindowSize() {
-    const [size, setSize] = useState([0, 0]);
-    useLayoutEffect(() => {
-      function updateSize() {
-        setSize([window.innerWidth, window.innerHeight]);
-      }
-      window.addEventListener('resize', updateSize);
-      updateSize();
-      return () => window.removeEventListener('resize', updateSize);
-    }, []);
-    return size;
-  }
   
 
 const MyGamesData = [
@@ -54,7 +40,6 @@ const MyGamesData = [
     }]
 
 export default function MyGames({ id, go, snack }) {
-    const [width, height] = useWindowSize();
 
     const cardItems = MyGamesData.map((data) =>
         <Card className={[card, mb1].join(' ')} size="l" mode="outline">
@@ -75,7 +60,7 @@ export default function MyGames({ id, go, snack }) {
             <PanelHeader
                 left={<PanelHeaderBack onClick={go} data-to="main" />}
             >
-                Мои викторины {width} x {height}
+                Мои викторины
             </PanelHeader>
             <Group className={contentCenter}>
                 {cardItems}
